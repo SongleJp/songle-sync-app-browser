@@ -1,5 +1,5 @@
 // 再生したいメディアを指定
-var media_url = "https://www.youtube.com/watch?v=77colQZcaU0"
+var media_url = "https://www.youtube.com/watch?v=msEN5bbIgbc"
 
 // Tokenを指定(以下のURLからTokenを発行できます)
 // http://api.songle.jp/user/
@@ -43,16 +43,41 @@ window.init = function(){
 	// 各イベントに対応するアクションを設定
 	setBeatEvent();
 	setChordEvent();
-	setChorusEvent();		
+	setChorusEvent();
 
-	// masterの場合は動画を自動再生する
+	// masterの場合は動画を再生
 	if (getUrlVars().master == "1" ) {
-		setTimeout(function(){
-			player.play()
-		}, 3000)
+		// mediaReadyで動画が準備完了したら実行
+		player.on("mediaReady", function(){
+			// プレイヤー操作ボタン設定	
+			setPlayerCtrl();
+			// 自動再生
+			setTimeout(function(){
+				player.play()
+			}, 1000);
+		})
 	}
 }
 
+// プレイヤー操作ボタン設定
+window.setPlayerCtrl = function(){
+	// 再生
+	$("#widget_ctrl .play").click( function(){
+		player.play();
+	});
+	// 停止
+	$("#widget_ctrl .pause").click( function(){
+		player.pause();
+	});
+	// 先頭
+	$("#widget_ctrl .head").click( function(){
+		player.seekTo(0);
+	});
+	// サビ出し
+	$("#widget_ctrl .seekto_chorus").click( function(){
+		player.seekToNextChorusSectionItem()
+	});				
+}
 
 // ビートでタイルの色を変える（cssで指定）
 window.setBeatEvent = function(){

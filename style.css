@@ -32,9 +32,47 @@ html,body {
 	z-index: 100;
 	position: absolute;
 	right: 10px;
-	bottom: 10px;
+	bottom: 70px;
 	width: 250px;
 	height: 200px;
+}
+
+#widget_ctrl {
+	z-index: 100;
+	display: table;
+	position: absolute;
+	right: 10px;
+	bottom: 30px;
+	padding: 0px;
+	margin: 0px;
+	width: 250px;
+}
+
+#widget_ctrl li {
+	display: table-cell;
+	background: rgba(40,40,40,0.5);
+	color: white;
+	height: 10px;
+	font-size: 10px;
+	line-height: 30px;
+	padding: 0px 10px;
+	text-align: center;
+}
+
+#widget_ctrl li:hover {
+	cursor: pointer;
+	background: orange;
+}
+
+.memo {
+	z-index: 100;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	width: 250px;
+	color: white;
+	font-size: 11px;
+	text-align: center;
 }
 
 #chord {
