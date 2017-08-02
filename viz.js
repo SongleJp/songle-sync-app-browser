@@ -8,33 +8,12 @@ var secretToken = "YOUR_SECRET_TOKEN"
 
 var player;
 
+// APIの準備が出来ると呼ばれる
 window.onSongleWidgetAPIReady = function(SongleWidgetAPI){
-	// APIの準備が出来ると実行される
 	window.SongleWidgetAPI = SongleWidgetAPI;
 	SongleWidget.System.defaultEndpointWebClientProtocol = "https:"; 
 	init();
 }
-
-// URLの引数を取得
-window.getUrlVars = function() {
-	var i, key, keySearch, len, p, param, val, vars;
-	vars = {};
-	param = location.search.substring(1).split('&');
-	for (i = 0, len = param.length; i < len; i++) {
-		p = param[i];
-		keySearch = p.search(/=/);
-		key = '';
-		if (keySearch !== -1) {
-			key = p.slice(0, keySearch);
-			val = p.slice(p.indexOf('=', 0) + 1);
-			if (key !== '') {
-				vars[key] = decodeURI(val);
-			}
-		}
-	}
-	return vars;
-}
-
 
 window.init = function(){
 
@@ -110,4 +89,24 @@ window.setChorusEvent = function(){
 		$("#beats").removeClass("chorus");
 		$("#chorus_alert").hide();		
 	});	
+}
+
+// URLの引数を取得する関数
+window.getUrlVars = function() {
+	var i, key, keySearch, len, p, param, val, vars;
+	vars = {};
+	param = location.search.substring(1).split('&');
+	for (i = 0, len = param.length; i < len; i++) {
+		p = param[i];
+		keySearch = p.search(/=/);
+		key = '';
+		if (keySearch !== -1) {
+			key = p.slice(0, keySearch);
+			val = p.slice(p.indexOf('=', 0) + 1);
+			if (key !== '') {
+				vars[key] = decodeURI(val);
+			}
+		}
+	}
+	return vars;
 }
