@@ -1,15 +1,21 @@
+// 再生したいメディアを指定
 var media_url = "https://www.youtube.com/watch?v=77colQZcaU0"
+
+// Tokenを指定(以下のURLからTokenを発行できます)
+// http://api.songle.jp/user/
 var accessToken = "YOUR_ACCESS_TOKEN"
 var secretToken = "YOUR_SECRET_TOKEN"
 
 var player;
 
 window.onSongleWidgetAPIReady = function(SongleWidgetAPI){
+	// APIの準備が出来ると実行される
 	window.SongleWidgetAPI = SongleWidgetAPI;
 	SongleWidget.System.defaultEndpointWebClientProtocol = "https:"; 
 	init();
 }
 
+// URLの引数を取得
 window.getUrlVars = function() {
 	var i, key, keySearch, len, p, param, val, vars;
 	vars = {};
@@ -29,33 +35,37 @@ window.getUrlVars = function() {
 	return vars;
 }
 
+
 window.init = function(){
 
 	if ( getUrlVars().master == "1" ) {
-		// master
+		// master ※ 引数 master=1
 		player = new SongleWidgetAPI.Player({
-			mediaElement: "div#widget"
+			mediaElement: "div#widget" // プレイヤーを埋め込むDOMを指定
 		});
 		player.accessToken = accessToken;
-		player.secretToken = secretToken;
-		player.useMedia( media_url );
+		player.secretToken = secretToken; // masterの場合は secretTokenをplayerにセットする
+		player.useMedia( media_url ); // プレイヤーを埋め込む
 	}
 	else {
-		// master
+		// slave
 		player = new SongleWidgetAPI.Player();
 		player.accessToken = accessToken;
 	}
 
+	// 利用するイベントを指定します
 	player.addPlugin(new SongleWidget.Plugin.Beat());
 	player.addPlugin(new SongleWidget.Plugin.Chorus());
 	player.addPlugin(new SongleWidget.Plugin.Chord());
 
 	player.addPlugin(new SongleWidget.Plugin.SongleSync())
 
+	// 各イベントに対応するアクションを設定
 	setBeatEvent();
 	setChordEvent();
 	setChorusEvent();		
 
+	// masterの場合は動画を自動再生する
 	if (getUrlVars().master == "1" ) {
 		setTimeout(function(){
 			console.log("play")
@@ -65,6 +75,7 @@ window.init = function(){
 }
 
 
+// ビートでタイルの色を変える（cssで指定）
 window.setBeatEvent = function(){
 	player.on( "beatEnter", function(e){
 		for(var i=1; i<=4; i++ ) {
@@ -78,6 +89,7 @@ window.setBeatEvent = function(){
 	});
 }
 
+// コード左上に表示する
 window.setChordEvent = function(){
 	player.on( "chordEnter", function(e){
 		if (e.data.chord.name != "N") {
@@ -88,6 +100,7 @@ window.setChordEvent = function(){
 	});
 }
 
+// サビはビートの色を変更(cssで指定)し、右上に「サビ」と表示させる
 window.setChorusEvent = function(){
 	player.on( "chorusSectionEnter", function(e){
 		$("#beats").addClass("chorus");
