@@ -1,10 +1,10 @@
 // 再生したいメディアを指定
-var media_url = "https://www.youtube.com/watch?v=msEN5bbIgbc"
+var media_url = "https://www.youtube.com/watch?v=msEN5bbIgbc";
 
 // Tokenを指定(以下のURLからTokenを発行できます)
 // http://api.songle.jp/user/
-var accessToken = "YOUR_ACCESS_TOKEN"
-var secretToken = "YOUR_SECRET_TOKEN"
+var accessToken = "YOUR_ACCESS_TOKEN";
+var secretToken = "YOUR_SECRET_TOKEN";
 
 var player;
 
@@ -16,26 +16,26 @@ window.onSongleWidgetAPIReady = function(SongleWidgetAPI){
 }
 
 window.init = function(){
-
 	if ( getUrlVars().master == "1" ) {
-		// master ※ 引数 master=1
+		// masterの場合 (引数 master=1)
 		player = new SongleWidgetAPI.Player({
 			mediaElement: "div#widget" // プレイヤーを埋め込むDOMを指定
 		});
 		player.accessToken = accessToken;
-		player.secretToken = secretToken; // masterの場合は secretTokenをplayerにセットする
-		player.useMedia( media_url ); // プレイヤーを埋め込む
+		player.secretToken = secretToken; // secretTokenをセットするとmasterになる
+		// 再生するメディアをセット
+		player.useMedia( media_url ); 
 	}
 	else {
-		// slave
+		// slaveの場合
 		player = new SongleWidgetAPI.Player();
 		player.accessToken = accessToken;
 	}
 
 	// slaveを同期させるプラグインを設定
-	player.addPlugin(new SongleWidget.Plugin.SongleSync())
+	player.addPlugin(new SongleWidget.Plugin.SongleSync());
 
-	// 利用するイベントを指定します
+	// 利用するイベントのプラグインを設定
 	player.addPlugin(new SongleWidget.Plugin.Beat());
 	player.addPlugin(new SongleWidget.Plugin.Chorus());
 	player.addPlugin(new SongleWidget.Plugin.Chord());
@@ -53,7 +53,7 @@ window.init = function(){
 			setPlayerCtrl();
 			// 自動再生
 			setTimeout(function(){
-				player.play()
+				player.play();
 			}, 1000);
 		})
 	}
