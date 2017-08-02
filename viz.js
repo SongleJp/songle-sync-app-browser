@@ -47,7 +47,6 @@ window.init = function(){
 	// masterの場合は動画を自動再生する
 	if (getUrlVars().master == "1" ) {
 		setTimeout(function(){
-			console.log("play")
 			player.play()
 		}, 3000)
 	}
