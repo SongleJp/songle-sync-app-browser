@@ -1,4 +1,4 @@
-var media_url   = "https://staff.aist.go.jp/t.nakano/music/VocaWatcher.Prologue.Miku.mp3";
+var media_url = "https://www.youtube.com/watch?v=77colQZcaU0"
 var accessToken = "YOUR_ACCESS_TOKEN"
 var secretToken = "YOUR_SECRET_TOKEN"
 
@@ -6,6 +6,7 @@ var player;
 
 window.onSongleWidgetAPIReady = function(SongleWidgetAPI){
 	window.SongleWidgetAPI = SongleWidgetAPI;
+	SongleWidget.System.defaultEndpointWebClientProtocol = "https:"; 
 	init();
 }
 
@@ -55,9 +56,12 @@ window.init = function(){
 	setChordEvent();
 	setChorusEvent();		
 
-	setTimeout(function(){
-		player.play()
-	}, 3000)
+	if (getUrlVars().master == "1" ) {
+		setTimeout(function(){
+			console.log("play")
+			player.play()
+		}, 3000)
+	}
 }
 
 
