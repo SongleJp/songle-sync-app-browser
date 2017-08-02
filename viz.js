@@ -76,7 +76,9 @@ window.setPlayerCtrl = function(){
 	// サビ出し
 	$("#widget_ctrl .seekto_chorus").click( function(){
 		player.seekToNextChorusSectionItem()
-	});				
+	});
+	$("#widget_ctrl").css({ display: "table" });
+	$(".memo").show();
 }
 
 // ビートでタイルの色を変える（cssで指定）

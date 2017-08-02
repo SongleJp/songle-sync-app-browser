@@ -38,8 +38,8 @@ html,body {
 }
 
 #widget_ctrl {
+	display: none;
 	z-index: 100;
-	display: table;
 	position: absolute;
 	right: 10px;
 	bottom: 30px;
@@ -65,6 +65,7 @@ html,body {
 }
 
 .memo {
+	display: none;
 	z-index: 100;
 	position: absolute;
 	right: 10px;
