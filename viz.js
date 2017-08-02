@@ -32,12 +32,13 @@ window.init = function(){
 		player.accessToken = accessToken;
 	}
 
+	// slaveを同期させるプラグインを設定
+	player.addPlugin(new SongleWidget.Plugin.SongleSync())
+
 	// 利用するイベントを指定します
 	player.addPlugin(new SongleWidget.Plugin.Beat());
 	player.addPlugin(new SongleWidget.Plugin.Chorus());
 	player.addPlugin(new SongleWidget.Plugin.Chord());
-
-	player.addPlugin(new SongleWidget.Plugin.SongleSync())
 
 	// 各イベントに対応するアクションを設定
 	setBeatEvent();
