@@ -1,6 +1,6 @@
-var media_url   = "https://www.youtube.com/watch?v=xOKplMgHxxA";
-var accessToken = "00000001-XoTxiBq"
-var secretToken = "qoY3iaTz3trc3ipwAn5pTgdwTjfPjYP3"
+var media_url   = "https://staff.aist.go.jp/t.nakano/music/VocaWatcher.Prologue.Miku.mp3";
+var accessToken = "YOUR_ACCESS_TOKEN"
+var secretToken = "YOUR_SECRET_TOKEN"
 
 var player;
 
