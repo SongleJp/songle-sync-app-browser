@@ -1,0 +1,63 @@
+html,body {
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	background: black;
+}
+
+#beats {
+	z-index: 10;
+	margin: 0px;
+	padding: 0px;
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+#beats li {
+	display: table-cell;
+	width: 25%;
+}
+
+#beats li.current {
+	background: steelblue;
+}
+
+#beats.chorus li.current {
+	background: orange;
+}
+
+#widget {
+	z-index: 100;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	width: 250px;
+	height: 200px;
+}
+
+#chord {
+	z-index: 20;
+	position: absolute;
+	left: 0px; top: 0px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 130px;
+	line-height: 100%;
+	padding: 50px;
+	color: white;
+}
+
+#chorus_alert {
+	display: none;
+	z-index: 20;
+	position: absolute;
+	right: 0px; top: 0px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 130px;
+	line-height: 100%;
+	padding: 50px;
+	color: white;
+}
