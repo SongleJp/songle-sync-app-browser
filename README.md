@@ -7,9 +7,11 @@
 
 ## Songle Sync のサイト上で Token を発行
 
+初めての方は新規登録が必要です  
+以下のURLから新規登録し、`accessToken`と`secretToken`を取得してください
+
 http://api.songle.jp/user/
 
-※初めての方は新規登録が必要です
 
 ## Tokenを設定する
 
