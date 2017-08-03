@@ -1,6 +1,6 @@
 # Songle Sync ブラウザ向けプロジェクト
 
-ブラウザで動作するシンプルな Songle Sync アプリケーション例です
+ブラウザで動作するシンプルな Songle Sync アプリケーション例です  
 引数で master/slave が切り替わります
 
 ![Songle Sync Browser](ss.png "Songle Sync Browser")
