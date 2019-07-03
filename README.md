@@ -10,7 +10,7 @@
 初めての方は新規登録が必要です  
 以下のURLから新規登録し、`accessToken`と`secretToken`を取得してください
 
-http://api.songle.jp/user/
+http://api.songle.jp/user/entry?sign-in=1
 
 
 ## Tokenを設定する
