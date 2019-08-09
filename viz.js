@@ -86,7 +86,7 @@ window.setBeatEvent = function(){
 	player.on( "beatEnter", function(e){
 		for(var i=1; i<=4; i++ ) {
 			li = $("#beats li.b" + i )
-			if (e.data.beat.position == i) {
+			if (e.data.beat.number == i) {
 				li.addClass("current");
 			} else {
 				li.removeClass("current");
